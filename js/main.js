@@ -24,14 +24,19 @@ Bonus:
 const usernameInputElement = document.querySelector("[name='username']");
 const kmNumberInputElement = document.querySelector("[name='km-number']");
 const ageNumberInputElement = document.querySelector("[name='age']");
+const btnConfirm = document.querySelector(".btn-confirm");
+const btnCancel = document.querySelector(".btn-cancel");
+const ticket = document.getElementById("ticket");
 const kmPrice = 0.21;
 const cabinNumber = Math.floor(Math.random() * (9 - 1)) + 1;
 const codeCp = Math.floor(Math.random() * (99999 - 10000)) + 10000;
 let kmPriceTotal, sale, ticketType;
 
-// Creo event listener
-const btnConfirm = document.querySelector(".btn-confirm");
+// Creo event listener - pulsante "Genera"
 btnConfirm.addEventListener("click", function () {
+
+    // Mostro il biglietto nel caso non sia visibile
+    ticket.classList.remove("d-none");
 
     const username = usernameInputElement.value;
     const kmNumber = parseInt(kmNumberInputElement.value);
@@ -68,4 +73,11 @@ btnConfirm.addEventListener("click", function () {
     document.getElementById("cabin-number").innerHTML = cabinNumber;
     document.getElementById("code-cp").innerHTML = codeCp;
     document.getElementById("ticket-type").innerHTML = ticketType;
+})
+
+// Creo event listener - pulsante "Annulla"
+btnCancel.addEventListener("click", function () {
+
+    // Nascondo il biglietto
+    ticket.className = ticket.classList + " d-none";
 })
