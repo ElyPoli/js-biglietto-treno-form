@@ -38,10 +38,14 @@
                         <label for="km-number-input" class="form-label">Km da percorrere</label>
                         <input type="text" class="form-control" id="km-number-input" name="km-number">
                     </div>
-                    <!-- Campo età -->
+                    <!-- Campo fascia d'età -->
                     <div class="col-12 col-md-4 mb-3">
-                        <label for="age-input" class="form-label">Anni</label>
-                        <input type="text" class="form-control" id="age-input" name="age">
+                        <label class="form-label">Fascia d'età</label>
+                        <select class="form-select" id="filter">
+                            <option value="adult">Adulto</option>
+                            <option value="young">Bambino</option>
+                            <option value="old">Over 65</option>
+                        </select>
                     </div>
                 </div>
                 <!-- Pulsanti -->

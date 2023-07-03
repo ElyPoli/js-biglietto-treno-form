@@ -23,14 +23,13 @@ Bonus:
 // Dichiaro variabili
 const usernameInputElement = document.querySelector("[name='username']");
 const kmNumberInputElement = document.querySelector("[name='km-number']");
-const ageNumberInputElement = document.querySelector("[name='age']");
 const btnConfirm = document.querySelector(".btn-confirm");
 const btnCancel = document.querySelector(".btn-cancel");
 const ticket = document.getElementById("ticket");
 const kmPrice = 0.21;
 const cabinNumber = Math.floor(Math.random() * (9 - 1)) + 1;
 const codeCp = Math.floor(Math.random() * (99999 - 10000)) + 10000;
-let kmPriceTotal, sale, ticketType;
+let kmPriceTotal, sale, ticketType, ageRange;
 
 // Creo event listener - pulsante "Genera"
 btnConfirm.addEventListener("click", function () {
@@ -40,10 +39,9 @@ btnConfirm.addEventListener("click", function () {
 
     const username = usernameInputElement.value;
     const kmNumber = parseInt(kmNumberInputElement.value);
-    const ageNumber = parseInt(ageNumberInputElement.value);
 
     // Controllo dati inseriti
-    if (isNaN(kmNumber) || isNaN(ageNumber) || kmNumber <= 0) {
+    if (isNaN(kmNumber) || kmNumber <= 0) {
         alert("Si è verificato un errore. Ricarica la pagina ed inserisci i dati corretti.");
     }
 
@@ -51,17 +49,20 @@ btnConfirm.addEventListener("click", function () {
     kmPriceTotal = kmNumber * kmPrice;
 
     // Applico sconto
-    if (ageNumber < 18) {
-        sale = (kmPriceTotal / 100) * 20;
-        ticketType = "Bambino";
-    }
-    else if (ageNumber > 65) {
-        sale = (kmPriceTotal / 100) * 20;
-        ticketType = "Over 65";
-    }
-    else {
-        sale = 0;
-        ticketType = "Adulto";
+    ageRange = document.getElementById('filter').value;
+
+    switch (ageRange) {
+        case "young":
+            sale = (kmPriceTotal / 100) * 20;
+            ticketType = "Bambino";
+            break;
+        case "old":
+            sale = (kmPriceTotal / 100) * 40;
+            ticketType = "Over 65";
+            break;
+        default:
+            sale = 0;
+            ticketType = "Adulto";
     }
 
     // Calcolo costo modificato del biglietto
