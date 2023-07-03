@@ -25,7 +25,9 @@ const usernameInputElement = document.querySelector("[name='username']");
 const kmNumberInputElement = document.querySelector("[name='km-number']");
 const ageNumberInputElement = document.querySelector("[name='age']");
 const kmPrice = 0.21;
-let kmPriceTotal, sale;
+const cabinNumber = Math.floor(Math.random() * (9 - 1)) + 1;
+const codeCp = Math.floor(Math.random() * (99999 - 10000)) + 10000;
+let kmPriceTotal, sale, ticketType;
 
 // Creo event listener
 const btnConfirm = document.querySelector(".btn-confirm");
@@ -46,12 +48,15 @@ btnConfirm.addEventListener("click", function () {
     // Applico sconto
     if (ageNumber < 18) {
         sale = (kmPriceTotal / 100) * 20;
+        ticketType = "Bambino";
     }
     else if (ageNumber > 65) {
         sale = (kmPriceTotal / 100) * 20;
+        ticketType = "Over 65";
     }
     else {
         sale = 0;
+        ticketType = "Adulto";
     }
 
     // Calcolo costo modificato del biglietto
@@ -59,7 +64,8 @@ btnConfirm.addEventListener("click", function () {
 
     // Stampo valori
     document.getElementById("username").innerHTML = username;
-    document.getElementById("age").innerHTML = ageNumber;
-    document.getElementById("km-number").innerHTML = kmNumber;
-    document.getElementById("km-price-total").innerHTML = kmPriceTotal;
+    document.getElementById("km-price-total").innerHTML = kmPriceTotal + "€";
+    document.getElementById("cabin-number").innerHTML = cabinNumber;
+    document.getElementById("code-cp").innerHTML = codeCp;
+    document.getElementById("ticket-type").innerHTML = ticketType;
 })

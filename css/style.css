@@ -1,0 +1,28 @@
+:root {
+    --bs-primary: #6A994E;
+    --bs-primary-rgb: 106, 153, 78;
+    --bs-secondary: #F2E8CF;
+    --bs-secondary-rgb: 242, 232, 207;
+}
+
+.btn-primary {
+    --bs-btn-bg: #BC4749;
+    --bs-btn-border-color: #BC4749;
+    --bs-btn-hover-bg: #92393a;
+    --bs-btn-hover-border-color: #92393a;
+    --bs-btn-active-bg: #92393a;
+    --bs-btn-active-border-color: #92393a;
+}
+
+.my-text-red {
+    color: #BC4749;
+}
+
+.table {
+    border-color: var(--bs-primary);
+}
+
+.table>:not(caption)>*>* {
+    background-color: transparent;
+    color: #BC4749;
+}

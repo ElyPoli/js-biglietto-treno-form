@@ -21,33 +21,60 @@
 
 <body>
 
-    <main>
+    <main class="bg-primary vh-100 d-flex align-items-center">
         <div class="container">
-            <!-- Campo nome e cognome -->
-            <div class="mb-3">
-                <label for="username-input" class="form-label">Nome e Cognome</label>
-                <input type="text" class="form-control" id="username-input" name="username">
+            <h2 class="fs-2 text-uppercase text-white text-center fw-bold m-0 pb-3">Calcola il prezzo del tuo biglietto
+            </h2>
+            <!-- Form da compilare -->
+            <div class="text-center my-text-red fw-bold fs-5 border rounded-3 p-3 bg-secondary mb-4">
+                <div class="row">
+                    <!-- Campo nome e cognome -->
+                    <div class="col-12 col-md-4 mb-3">
+                        <label for="username-input" class="form-label">Nome e Cognome</label>
+                        <input type="text" class="form-control" id="username-input" name="username">
+                    </div>
+                    <!-- Campo km da percorrere -->
+                    <div class="col-12 col-md-4 mb-3">
+                        <label for="km-number-input" class="form-label">Km da percorrere</label>
+                        <input type="text" class="form-control" id="km-number-input" name="km-number">
+                    </div>
+                    <!-- Campo età -->
+                    <div class="col-12 col-md-4 mb-3">
+                        <label for="age-input" class="form-label">Anni</label>
+                        <input type="text" class="form-control" id="age-input" name="age">
+                    </div>
+                </div>
+                <!-- Pulsanti -->
+                <button class="btn btn-primary btn-confirm">Genera</button>
+                <button class="btn btn-primary">Annulla</button>
             </div>
-            <!-- Campo km da percorrere -->
-            <div class="mb-3">
-                <label for="km-number-input" class="form-label">Km da percorrere</label>
-                <input type="text" class="form-control" id="km-number-input" name="km-number">
-            </div>
-            <!-- Campo età -->
-            <div class="mb-3">
-                <label for="age-input" class="form-label">Anni</label>
-                <input type="text" class="form-control" id="age-input" name="age">
-            </div>
-            <!-- Pulsanti -->
-            <button class="btn btn-primary btn-confirm">Genera</button>
-            <button class="btn btn-primary">Annulla</button>
             <!-- Biglietto -->
-            <div id="ticket">
-                <!-- Riepilogo dati -->
-                <p>Biglietto per: <span id="username"></span>, <span id="age"></span> anni, <span id="km-number"></span>
-                    km da percorrere</p>
-                <!-- Costo biglietto -->
-                <p>Il costo totale è di <span id="km-price-total"></span>€</p>
+            <div id="ticket" class="mt-4">
+                <h2 class="fs-2 text-uppercase text-white text-center fw-bold m-0 pb-3">Il tuo biglietto
+                </h2>
+                <div class="text-center fs-5 border rounded-3 p-3 bg-secondary">
+                    <!-- Riepilogo dati e costo -->
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nome del passeggero</th>
+                                <th scope="col">Offerta</th>
+                                <th scope="col">Carrozza</th>
+                                <th scope="col">Codice CP</th>
+                                <th scope="col">Costo biglietto</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td id="username"></td>
+                                <td id="ticket-type"></td>
+                                <td id="cabin-number"></td>
+                                <td id="code-cp"></td>
+                                <td id="km-price-total"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </main>
