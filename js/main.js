@@ -21,36 +21,45 @@ Bonus:
 */
 
 // Dichiaro variabili
-const kmNumber = parseInt(prompt("Inserisci quanti km vuoi percorrere"));
-const ageNumber = parseInt(prompt("Inserisci l'età del passeggero"));
+const usernameInputElement = document.querySelector("[name='username']");
+const kmNumberInputElement = document.querySelector("[name='km-number']");
+const ageNumberInputElement = document.querySelector("[name='age']");
 const kmPrice = 0.21;
 let kmPriceTotal, sale;
 
+// Creo event listener
+const btnConfirm = document.querySelector(".btn-confirm");
+btnConfirm.addEventListener("click", function () {
 
-// Controllo dati inseriti
-if (isNaN(kmNumber) || isNaN(ageNumber) || kmNumber <= 0) {
-    alert("Si è verificato un errore. Ricarica la pagina ed inserisci i dati corretti.");
-}
+    const username = usernameInputElement.value;
+    const kmNumber = parseInt(kmNumberInputElement.value);
+    const ageNumber = parseInt(ageNumberInputElement.value);
 
-// Calcolo il costo standard del biglietto
-kmPriceTotal = kmNumber * kmPrice;
+    // Controllo dati inseriti
+    if (isNaN(kmNumber) || isNaN(ageNumber) || kmNumber <= 0) {
+        alert("Si è verificato un errore. Ricarica la pagina ed inserisci i dati corretti.");
+    }
 
-// Applico sconto
-if (ageNumber < 18) {
-    console.log("L'utente è minorenne");
-    sale = (kmPriceTotal / 100) * 20;
-}
-else if (ageNumber > 65) {
-    console.log("L'utente è over 65");
-    sale = (kmPriceTotal / 100) * 20;
-}
-else {
-    console.log("L'utente è un adulto");
-    sale = 0;
-}
+    // Calcolo il costo standard del biglietto
+    kmPriceTotal = kmNumber * kmPrice;
 
-// Calcolo costo modificato del biglietto
-kmPriceTotal = (kmPriceTotal - sale).toFixed(2);
+    // Applico sconto
+    if (ageNumber < 18) {
+        sale = (kmPriceTotal / 100) * 20;
+    }
+    else if (ageNumber > 65) {
+        sale = (kmPriceTotal / 100) * 20;
+    }
+    else {
+        sale = 0;
+    }
 
-console.log(kmPriceTotal);
+    // Calcolo costo modificato del biglietto
+    kmPriceTotal = (kmPriceTotal - sale).toFixed(2);
 
+    // Stampo valori
+    document.getElementById("username").innerHTML = username;
+    document.getElementById("age").innerHTML = ageNumber;
+    document.getElementById("km-number").innerHTML = kmNumber;
+    document.getElementById("km-price-total").innerHTML = kmPriceTotal;
+})
