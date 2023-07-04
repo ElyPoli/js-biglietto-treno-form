@@ -27,8 +27,6 @@ const btnConfirm = document.querySelector(".btn-confirm");
 const btnCancel = document.querySelector(".btn-cancel");
 const ticket = document.getElementById("ticket");
 const kmPrice = 0.21;
-const cabinNumber = Math.floor(Math.random() * (9 - 1)) + 1;
-const codeCp = Math.floor(Math.random() * (99999 - 10000)) + 10000;
 let kmPriceTotal, sale, ticketType, ageRange;
 
 // Creo event listener - pulsante "Genera"
@@ -44,6 +42,10 @@ btnConfirm.addEventListener("click", function () {
     if (isNaN(kmNumber) || kmNumber <= 0) {
         alert("Si è verificato un errore. Ricarica la pagina ed inserisci i dati corretti.");
     }
+
+    // Genero casualmente la carrozza e il cp
+    const cabinNumber = Math.floor(Math.random() * (9 - 1)) + 1;
+    const codeCp = Math.floor(Math.random() * (99999 - 10000)) + 10000;
 
     // Calcolo il costo standard del biglietto
     kmPriceTotal = kmNumber * kmPrice;
@@ -79,6 +81,7 @@ btnConfirm.addEventListener("click", function () {
 // Creo event listener - pulsante "Annulla"
 btnCancel.addEventListener("click", function () {
 
-    // Nascondo il biglietto
-    ticket.className = ticket.classList + " d-none";
+    // Ricarico la pagina per nascondere il biglietto
+    location.reload();
+
 })
